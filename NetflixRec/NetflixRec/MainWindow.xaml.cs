@@ -28,6 +28,7 @@ namespace NetflixRec
         
         private void SignIn_Click(object sender, RoutedEventArgs e)
         {
+            SignIn.Visibility = Visibility.Hidden;
             LoginPage.Visibility = Visibility.Visible;
             LoginBorder.Visibility = Visibility.Visible;
             UserNameBox.Foreground = Brushes.Gray;
@@ -42,16 +43,21 @@ namespace NetflixRec
             LoginPage.Visibility = Visibility.Hidden;
             LoginBorder.Visibility = Visibility.Hidden;
             SignOut.Visibility = Visibility.Visible;
+            CreateUser.Margin = new Thickness(1025, 33, 0, 0);
+            MovieInfoGrid.Visibility = Visibility.Visible;
         }
 
         private void SignOut_Click(object sender, RoutedEventArgs e)
         {
             SignOut.Visibility = Visibility.Hidden;
             SignIn.Visibility = Visibility.Visible;
+            CreateUser.Margin = new Thickness(0, 405, 0, 0);
+            MovieInfoGrid.Visibility = Visibility.Hidden;
         }
 
         private void CreateUser_Click(object sender, RoutedEventArgs e)
         {
+            SignIn.Visibility = Visibility.Hidden;
             CreateUserForm.Visibility = Visibility.Visible;
             CreateUserFormBorder.Visibility = Visibility.Visible;
             FirstNameCreatedForm.Foreground = Brushes.Gray;
@@ -62,6 +68,7 @@ namespace NetflixRec
             LastNameCreatedForm.Text = "Last Name";
             UserNameCreatedForm.Text = "Username";
             PasswordCreatedForm.Text = "Password";
+            MovieInfoGrid.Visibility = Visibility.Hidden;
         }
 
         private void UserNameBox_GotFocus(object sender, RoutedEventArgs e)
@@ -159,6 +166,9 @@ namespace NetflixRec
         {
             CreateUserForm.Visibility = Visibility.Hidden;
             CreateUserFormBorder.Visibility = Visibility.Hidden;
+            CreateUser.Margin = new Thickness(1025, 33, 0, 0);
+            SignOut.Visibility = Visibility.Visible;
+            MovieInfoGrid.Visibility = Visibility.Visible;
         }
     }
 }
