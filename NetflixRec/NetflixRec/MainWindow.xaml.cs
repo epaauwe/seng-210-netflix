@@ -20,12 +20,17 @@ namespace NetflixRec
     /// </summary>
     public partial class MainWindow : Window
     {
+        public int UserID = -1;
+        public List<Content> content = new List<Content>();
+        public int currentIndex = 0;
+
         public MainWindow()
         {
             InitializeComponent();
         }
-        
-        
+
+
+
         private void SignIn_Click(object sender, RoutedEventArgs e)
         {
             SignIn.Visibility = Visibility.Hidden;
@@ -39,6 +44,20 @@ namespace NetflixRec
 
         private void LoginButton_Click(object sender, RoutedEventArgs e)
         {
+            if (UserNameBox.Text == "" || PassWordBox.Text == "")
+            {
+                // fields were left empty
+                return;
+            }
+            UserID = DataController.LoadUserID(UserNameBox.Text, PassWordBox.Text);
+            if (UserID == -1)
+            {
+                // user doesn't exist
+                return;
+            }
+            content = DataController.LoadContent(UserID);
+            MovieName.Content = content[currentIndex].Title;
+
             SignIn.Visibility = Visibility.Hidden;
             LoginPage.Visibility = Visibility.Hidden;
             LoginBorder.Visibility = Visibility.Hidden;
@@ -49,6 +68,9 @@ namespace NetflixRec
 
         private void SignOut_Click(object sender, RoutedEventArgs e)
         {
+            content = new List<Content>();
+            currentIndex = 0;
+            UserID = -1;
             SignOut.Visibility = Visibility.Hidden;
             SignIn.Visibility = Visibility.Visible;
             CreateUser.Margin = new Thickness(0, 405, 0, 0);
@@ -57,6 +79,8 @@ namespace NetflixRec
 
         private void CreateUser_Click(object sender, RoutedEventArgs e)
         {
+            content = new List<Content>();
+            currentIndex = 0;
             SignIn.Visibility = Visibility.Hidden;
             CreateUserForm.Visibility = Visibility.Visible;
             CreateUserFormBorder.Visibility = Visibility.Visible;
@@ -79,7 +103,7 @@ namespace NetflixRec
 
         private void UserNameBox_LostFocus(object sender, RoutedEventArgs e)
         {
-            if(UserNameBox.Text == "")
+            if (UserNameBox.Text == "")
             {
                 UserNameBox.Foreground = Brushes.Gray;
                 UserNameBox.Text = "Insert Username Here";
@@ -88,12 +112,11 @@ namespace NetflixRec
 
         private void PassWordBox_LostFocus(object sender, RoutedEventArgs e)
         {
-            if(PassWordBox.Text == "")
+            if (PassWordBox.Text == "")
             {
                 PassWordBox.Foreground = Brushes.Gray;
                 PassWordBox.Text = "Insert Password Here";
             }
-            
         }
 
         private void PassWordBox_GotFocus(object sender, RoutedEventArgs e)
@@ -164,11 +187,49 @@ namespace NetflixRec
 
         private void CreateUserButton_onForm_Click(object sender, RoutedEventArgs e)
         {
+            if (FirstNameCreatedForm.Text == "" || LastNameCreatedForm.Text == "" || UserNameCreatedForm.Text == "" || PasswordCreatedForm.Text == "")
+            {
+                // fields were left empty
+                return;
+            }
+            UserID = DataController.CreateUser(FirstNameCreatedForm.Text, LastNameCreatedForm.Text, UserNameCreatedForm.Text, PasswordCreatedForm.Text);
+            if (UserID == -1)
+            {
+                // user wasn't created
+                return;
+            }
+            content = DataController.LoadContent(UserID);
+            MovieName.Content = content[currentIndex].Title;
+
             CreateUserForm.Visibility = Visibility.Hidden;
             CreateUserFormBorder.Visibility = Visibility.Hidden;
             CreateUser.Margin = new Thickness(1025, 33, 0, 0);
             SignOut.Visibility = Visibility.Visible;
             MovieInfoGrid.Visibility = Visibility.Visible;
         }
+
+        private void Rating_Click(object sender, RoutedEventArgs e)
+        {
+            double rating = Convert.ToDouble((sender as Button).Content.ToString());
+            DataController.InsertRating(content[currentIndex].ID, UserID, rating);
+            content.RemoveAt(currentIndex);
+            MovieName.Content = content[currentIndex].Title;
+        }
+
+        private void NextButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (currentIndex == content.Count - 1)
+                currentIndex = -1; // loop back to start if end of content is reached
+            currentIndex++;
+            MovieName.Content = content[currentIndex].Title;
+        }
+
+        private void RandomButton_Click(object sender, RoutedEventArgs e)
+        {
+            Random rand = new Random();
+            currentIndex = rand.Next(0, content.Count - 1);
+            MovieName.Content = content[currentIndex].Title;
+        }
     }
 }
+
