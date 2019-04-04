@@ -29,7 +29,7 @@ namespace NetflixRec
             InitializeComponent();
         }
 
-
+        #region UserCreationLogin
 
         private void SignIn_Click(object sender, RoutedEventArgs e)
         {
@@ -208,6 +208,9 @@ namespace NetflixRec
             MovieInfoGrid.Visibility = Visibility.Visible;
         }
 
+        #endregion
+
+        #region RatingsNextRandomBTNs
         private void Rating_Click(object sender, RoutedEventArgs e)
         {
             double rating = Convert.ToDouble((sender as Button).Content.ToString());
@@ -230,6 +233,10 @@ namespace NetflixRec
             currentIndex = rand.Next(0, content.Count - 1);
             MovieName.Content = content[currentIndex].Title;
         }
+
+        #endregion
+
+
     }
 }
 
