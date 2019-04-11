@@ -84,6 +84,7 @@ namespace NetflixRec
             SignIn.Visibility = Visibility.Hidden;
             CreateUserForm.Visibility = Visibility.Visible;
             CreateUserFormBorder.Visibility = Visibility.Visible;
+            btnBack.Visibility = Visibility.Visible;
             FirstNameCreatedForm.Foreground = Brushes.Gray;
             LastNameCreatedForm.Foreground = Brushes.Gray;
             UserNameCreatedForm.Foreground = Brushes.Gray;
@@ -93,6 +94,14 @@ namespace NetflixRec
             UserNameCreatedForm.Text = "Username";
             PasswordCreatedForm.Text = "Password";
             MovieInfoGrid.Visibility = Visibility.Hidden;
+        }
+
+        private void btnBack_Click(object sender, RoutedEventArgs e) //Connect this to btnBack
+        {
+            SignIn.Visibility = Visibility.Visible;
+            CreateUserForm.Visibility = Visibility.Hidden;
+            CreateUserFormBorder.Visibility = Visibility.Hidden;
+
         }
 
         private void UserNameBox_GotFocus(object sender, RoutedEventArgs e)
@@ -187,15 +196,28 @@ namespace NetflixRec
 
         private void CreateUserButton_onForm_Click(object sender, RoutedEventArgs e)
         {
+            txtNoRecord.Visibility = Visibility.Hidden;
             if (FirstNameCreatedForm.Text == "" || LastNameCreatedForm.Text == "" || UserNameCreatedForm.Text == "" || PasswordCreatedForm.Text == "")
             {
                 // fields were left empty
+                //Warn user record not created, clear fields
+                txtNoRecord.Visibility = Visibility.Visible;
+                FirstNameCreatedForm.Text = "";
+                LastNameCreatedForm.Text = "";
+                UserNameCreatedForm.Text = "";
+                PasswordCreatedForm.Text = "";
                 return;
             }
             UserID = DataController.CreateUser(FirstNameCreatedForm.Text, LastNameCreatedForm.Text, UserNameCreatedForm.Text, PasswordCreatedForm.Text);
             if (UserID == -1)
             {
                 // user wasn't created
+                //Warn user record not created, clear fields
+                txtNoRecord.Visibility = Visibility.Visible;
+                FirstNameCreatedForm.Text = "";
+                LastNameCreatedForm.Text = "";
+                UserNameCreatedForm.Text = "";
+                PasswordCreatedForm.Text = "";
                 return;
             }
             content = DataController.LoadContent(UserID);
@@ -229,6 +251,11 @@ namespace NetflixRec
             Random rand = new Random();
             currentIndex = rand.Next(0, content.Count - 1);
             MovieName.Content = content[currentIndex].Title;
+        }
+
+        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
         }
     }
 }

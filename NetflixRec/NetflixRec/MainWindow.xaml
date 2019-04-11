@@ -37,6 +37,7 @@
             <Label x:Name="PasswordCreate" Content="Password" HorizontalAlignment="Left" Margin="34,243,0,0" VerticalAlignment="Top"/>
             <TextBox x:Name="PasswordCreatedForm" HorizontalAlignment="Left" Height="23" Margin="34,274,0,0" TextWrapping="Wrap" Text="Password" VerticalAlignment="Top" Width="410" Foreground="#FF8B8686" GotFocus="PasswordCreatedForm_GotFocus" LostFocus="PasswordCreatedForm_LostFocus"/>
             <Button x:Name="CreateUserButton_onForm" Content="Create User" HorizontalAlignment="Left" Margin="369,320,0,0" VerticalAlignment="Top" Width="75" Click="CreateUserButton_onForm_Click"/>
+            <Button x:Name="btnBack" Content="Back" HorizontalAlignment="Left" Margin="264,320,0,0" VerticalAlignment="Top" Width="74" IsCancel="True"/>
         </Grid>
         <Label Content="Netflix" HorizontalContentAlignment="Center" HorizontalAlignment="Center" Margin="0,0,0,0" VerticalAlignment="Top" Height="138" Width="418" FontSize="110"/>
         <Grid x:Name="MovieInfoGrid" Visibility="Hidden" HorizontalAlignment="Left" Height="659" Margin="10,102,0,0" VerticalAlignment="Top" Width="1174">
@@ -50,6 +51,16 @@
             <Button Content="Random" HorizontalAlignment="Center" Margin="187,288,637,0" VerticalAlignment="Top" Width="350" Height="60" FontSize="48" Click="RandomButton_Click"/>
             <Grid x:Name="RecMovies" HorizontalAlignment="Left" Height="269" Margin="53,380,0,0" VerticalAlignment="Top" Width="1092"/>
         </Grid>
+        <TextBox x:Name="txtNoRecord" HorizontalAlignment="Left" Height="22" Margin="97,704,0,0" TextWrapping="Wrap" Text="Record not created!" VerticalAlignment="Top" Width="120" TextChanged="TextBox_TextChanged" RenderTransformOrigin="0.5,0.5" Visibility="Hidden" BorderBrush="{x:Null}">
+            <TextBox.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform ScaleX="2" ScaleY="2"/>
+                    <SkewTransform/>
+                    <RotateTransform/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </TextBox.RenderTransform>
+        </TextBox>
 
 
     </Grid>
