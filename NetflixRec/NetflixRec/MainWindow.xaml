@@ -8,48 +8,64 @@
         Title="MainWindow" Height="800" Width="1200" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" >
     <Grid Name="HomePage">
 
-        <Button x:Name="SignIn" Visibility="Visible" Content="Sign In" HorizontalAlignment="Center" Margin="0,263,0,0" VerticalAlignment="Top" Width="150" BorderBrush="Black" Background="White" Click="SignIn_Click" Height="60" FontSize="20"/>
-        <Button x:Name="CreateUser" Visibility="Visible" Content="CreateUser" HorizontalAlignment="Center" Margin="0,405,0,0" VerticalAlignment="Top" Width="150" BorderBrush="Black" Background="White" Click="CreateUser_Click" Height="60" FontSize="20"/>
+        <Rectangle Fill="#FFB82424" HorizontalAlignment="Left" Height="587" Margin="0,184,0,0" Stroke="Black" VerticalAlignment="Top" Width="1194"/>
 
-        <Button x:Name="SignOut" Content="Sign Out" Visibility="Hidden" HorizontalAlignment="Left" Margin="860,33,0,0" VerticalAlignment="Top" Width="150" BorderBrush="Black" Background="White" Click="SignOut_Click" Height="60" FontSize="20"/>
 
-        <Rectangle Visibility="Hidden" x:Name="LoginBorder" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="253" Margin="350,250,0,0" Stroke="Black" VerticalAlignment="Top" Width="510"/>
-        <Grid Name ="LoginPage" Visibility="Hidden" HorizontalAlignment="Left" Height="236" Margin="350,250,0,0" VerticalAlignment="Top" Width="493">
-            <Label x:Name="UserNameLabel" Content="Username" HorizontalAlignment="Left" Margin="24,49,0,0" VerticalAlignment="Top" Width="94"/>
+
+        <Rectangle Fill="#FF3E3939" HorizontalAlignment="Left" Height="208" Stroke="Black" VerticalAlignment="Top" Width="1194"/>
+
+
+
+        <Image x:Name="NetflixLogo" Margin="0,-112,0,448" Source="NetflixLogo.png" Stretch="Fill" HorizontalAlignment="Center" Width="1194"/>
+        <Button x:Name="OpenOptions" Content="---&gt;" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="75" Height="58" FontSize="36" Click="OpenOptions_Click" Background="#FFB82424" Foreground="#FF3E3939" FontFamily="Stencil"/>
+
+
+        <Button x:Name="SignIn" Visibility="Visible" Content="Sign In" HorizontalAlignment="Center" Margin="458,279,480,0" VerticalAlignment="Top" Width="256" BorderBrush="Black" Background="#FF3E3939" Click="SignIn_Click" Height="94" FontSize="36" Foreground="White" FontFamily="Stencil"/>
+        <Button x:Name="CreateUser" Visibility="Visible" Content="Create User" HorizontalAlignment="Center" Margin="458,421,480,0" VerticalAlignment="Top" Width="256" BorderBrush="Black" Background="#FF3E3939" Click="CreateUser_Click" Height="94" FontSize="36" FontFamily="Stencil" Foreground="White"/>
+
+        <Grid x:Name ="LoginPage" Visibility="Hidden" HorizontalAlignment="Left" Height="253" Margin="350,250,0,0" VerticalAlignment="Top" Width="493">
+            <Rectangle Fill="#FF3E3939" HorizontalAlignment="Left" Height="285" Stroke="Black" VerticalAlignment="Top" Width="579" Margin="-28,-14,-58,-35"/>
+            <Label x:Name="UserNameLabel" Content="Username" HorizontalAlignment="Left" Margin="24,49,0,0" VerticalAlignment="Top" Width="94" FontFamily="Stencil" FontSize="16" Foreground="White"/>
             <TextBox x:Name="UserNameBox" HorizontalAlignment="Left" Height="23" Margin="24,80,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="422" Foreground="#FFAAA5A5" Text="Insert Username Here" GotFocus="UserNameBox_GotFocus" LostFocus="UserNameBox_LostFocus"/>
             <TextBox x:Name="PassWordBox" HorizontalAlignment="Left" Height="23" Margin="24,139,0,0" TextWrapping="Wrap" Text="Insert Password Here" VerticalAlignment="Top" Width="422" Foreground="#FFAAA5A5" LostFocus="PassWordBox_LostFocus" GotFocus="PassWordBox_GotFocus"/>
-            <Label x:Name="PassWordLabel" Content="Password" HorizontalAlignment="Left" Margin="24,108,0,0" VerticalAlignment="Top" Width="94"/>
-            <Label x:Name="Login" Content="Login" HorizontalAlignment="Left" Margin="161,10,0,0" VerticalAlignment="Top" Height="60" Width="88" FontSize="24"/>
-            <Button x:Name="LoginButton" Content="Login" HorizontalAlignment="Left" Margin="371,206,0,0" VerticalAlignment="Top" Width="75" BorderBrush="Black" Background="{x:Null}" Click="LoginButton_Click"/>
+            <Label x:Name="PassWordLabel" Content="Password" HorizontalAlignment="Left" Margin="24,108,0,0" VerticalAlignment="Top" Width="94" Foreground="White" FontFamily="Stencil" FontSize="16"/>
+            <Label x:Name="Login" Content="Login" HorizontalAlignment="Left" Margin="161,10,0,0" VerticalAlignment="Top" Height="60" Width="124" FontSize="36" FontFamily="Stencil" Foreground="White"/>
+            <Button x:Name="LoginButton" Content="Login" HorizontalAlignment="Left" Margin="371,206,0,0" VerticalAlignment="Top" Width="75" BorderBrush="Black" Background="#FFB82424" Click="LoginButton_Click" Foreground="White" FontFamily="Stencil" FontSize="16"/>
+            <Button x:Name="cancelLogin" Content="Cancel" HorizontalAlignment="Left" Margin="279,206,0,0" VerticalAlignment="Top" Width="75" BorderBrush="Black" Background="#FFB82424" Foreground="White" FontFamily="Stencil" FontSize="16" Click="CancelLogin_Click"/>
         </Grid>
 
-        <Rectangle Visibility="Hidden" x:Name="CreateUserFormBorder" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="350
-                   " Margin="350,250,0,0" Stroke="Black" VerticalAlignment="Top" Width="510"/>
-        <Grid Name="CreateUserForm" Visibility="Hidden" HorizontalAlignment="Left" Height="350
-              " Margin="350,250,0,0" VerticalAlignment="Top" Width="510">
-            <Label x:Name="FirstName" Content="First Name" HorizontalAlignment="Left" Margin="34,60,0,0" VerticalAlignment="Top"/>
-            <Label Content="Create User" HorizontalAlignment="Left" Margin="160,10,0,0" VerticalAlignment="Top" Height="39" Width="166" FontSize="24"/>
+        <Grid x:Name="CreateUserForm" Visibility="Hidden" HorizontalAlignment="Left" Height="350               " Margin="350,250,0,0" VerticalAlignment="Top" Width="510">
+            <Rectangle Fill="#FF3E3939" HorizontalAlignment="Left" Height="350" Stroke="Black" VerticalAlignment="Top" Width="510"/>
+            <Label x:Name="FirstName" Content="First Name" HorizontalAlignment="Left" Margin="34,60,0,0" VerticalAlignment="Top" Foreground="White" FontFamily="Stencil" FontSize="16"/>
+            <Label Content="Create User" HorizontalAlignment="Left" Margin="160,10,0,0" VerticalAlignment="Top" Height="39" Width="166" FontSize="24" Foreground="White" FontFamily="Stencil"/>
             <TextBox x:Name="FirstNameCreatedForm" HorizontalAlignment="Left" Height="23" Margin="34,91,0,0" TextWrapping="Wrap" Text="First Name" VerticalAlignment="Top" Width="410" Foreground="#FF8B8686" GotFocus="FirstNameCreatedForm_GotFocus" LostFocus="FirstNameCreatedForm_LostFocus"/>
-            <Label x:Name="LastName" Content="Last Name" HorizontalAlignment="Left" Margin="34,123,0,0" VerticalAlignment="Top"/>
+            <Label x:Name="LastName" Content="Last Name" HorizontalAlignment="Left" Margin="34,123,0,0" VerticalAlignment="Top" FontFamily="Stencil" FontSize="16" Foreground="White"/>
             <TextBox x:Name="LastNameCreatedForm" HorizontalAlignment="Left" Height="23" Margin="34,154,0,0" TextWrapping="Wrap" Text="Last Name" VerticalAlignment="Top" Width="410" Foreground="#FF8B8686" GotFocus="LastNameCreatedForm_GotFocus" LostFocus="LastNameCreatedForm_LostFocus"/>
-            <Label x:Name="UsernameCreate" Content="Username" HorizontalAlignment="Left" Margin="34,182,0,0" VerticalAlignment="Top"/>
+            <Label x:Name="UsernameCreate" Content="Username" HorizontalAlignment="Left" Margin="34,182,0,0" VerticalAlignment="Top" FontFamily="Stencil" FontSize="16" Foreground="White"/>
             <TextBox x:Name="UserNameCreatedForm" HorizontalAlignment="Left" Height="23" Margin="34,213,0,0" TextWrapping="Wrap" Text="Username" VerticalAlignment="Top" Width="410" Foreground="#FF8B8686" GotFocus="UserNameCreatedForm_GotFocus" LostFocus="UserNameCreatedForm_LostFocus"/>
-            <Label x:Name="PasswordCreate" Content="Password" HorizontalAlignment="Left" Margin="34,243,0,0" VerticalAlignment="Top"/>
+            <Label x:Name="PasswordCreate" Content="Password" HorizontalAlignment="Left" Margin="34,243,0,0" VerticalAlignment="Top" FontFamily="Stencil" FontSize="16" Foreground="White"/>
             <TextBox x:Name="PasswordCreatedForm" HorizontalAlignment="Left" Height="23" Margin="34,274,0,0" TextWrapping="Wrap" Text="Password" VerticalAlignment="Top" Width="410" Foreground="#FF8B8686" GotFocus="PasswordCreatedForm_GotFocus" LostFocus="PasswordCreatedForm_LostFocus"/>
-            <Button x:Name="CreateUserButton_onForm" Content="Create User" HorizontalAlignment="Left" Margin="369,320,0,0" VerticalAlignment="Top" Width="75" Click="CreateUserButton_onForm_Click"/>
+            <Button x:Name="CreateUserButton_onForm" Content="Create User" HorizontalAlignment="Left" Margin="362,320,0,0" VerticalAlignment="Top" Width="138" Click="CreateUserButton_onForm_Click" Background="#FFB82424" Foreground="White" FontFamily="Stencil" FontSize="18"/>
+            <Button x:Name="Cancel" Content="Cancel" HorizontalAlignment="Left" Margin="206,320,0,0" VerticalAlignment="Top" Width="138" Background="#FFB82424" Foreground="White" FontFamily="Stencil" FontSize="18" Click="Cancel_Click"/>
         </Grid>
-        <Label Content="Netflix" HorizontalContentAlignment="Center" HorizontalAlignment="Center" Margin="0,0,0,0" VerticalAlignment="Top" Height="138" Width="418" FontSize="110"/>
-        <Grid x:Name="MovieInfoGrid" Visibility="Hidden" HorizontalAlignment="Left" Height="659" Margin="10,102,0,0" VerticalAlignment="Top" Width="1174">
-            <Label x:Name="MovieName" HorizontalContentAlignment="Center" Content="Movie Title" HorizontalAlignment="Center" Margin="257,38,257,0" VerticalAlignment="Top" Height="96" Width="660" FontSize="72"/>
-            <Button x:Name="RatingFour" Content="4" HorizontalAlignment="Center" Margin="724,164,374,0" VerticalAlignment="Top" Width="76" Height="60" FontSize="48" Click="Rating_Click"/>
-            <Button x:Name="RatingFive" Content="5" HorizontalAlignment="Center" Margin="900,164,200,0" VerticalAlignment="Top" Width="74" Height="60" FontSize="48" Click="Rating_Click"/>
-            <Button x:Name="RatingTwo" Content="2" HorizontalAlignment="Center" Margin="374,164,724,0" VerticalAlignment="Top" Width="76" Height="60" FontSize="48" Click="Rating_Click"/>
-            <Button x:Name="RatingOne" Content="1" HorizontalAlignment="Center" Margin="200,164,900,0" VerticalAlignment="Top" Width="74" Height="60" FontSize="48" Click="Rating_Click"/>
-            <Button x:Name="RatingThree" Content="3" HorizontalAlignment="Center" Margin="550,164,550,0" VerticalAlignment="Top" Width="74" Height="60" FontSize="48" Click="Rating_Click"/>
-            <Button Content="Next" HorizontalAlignment="Center" Margin="637,288,187,0" VerticalAlignment="Top" Width="350" Height="60" FontSize="48" Click="NextButton_Click"/>
-            <Button Content="Random" HorizontalAlignment="Center" Margin="187,288,637,0" VerticalAlignment="Top" Width="350" Height="60" FontSize="48" Click="RandomButton_Click"/>
-            <Grid x:Name="RecMovies" HorizontalAlignment="Left" Height="269" Margin="53,380,0,0" VerticalAlignment="Top" Width="1092"/>
+        <Grid x:Name="MovieInfoGrid" Visibility="Hidden" HorizontalAlignment="Left" Height="571" Margin="10,190,0,0" VerticalAlignment="Top" Width="1174">
+            <Label x:Name="MovieName" HorizontalContentAlignment="Center" Content="Movie Title" HorizontalAlignment="Center" Margin="10,38,10,0" VerticalAlignment="Top" Height="96" Width="1154" FontSize="72" FontFamily="Stencil"/>
+            <Button x:Name="RatingFour" Content="4" HorizontalAlignment="Center" Margin="724,164,374,0" VerticalAlignment="Top" Width="76" Height="60" FontSize="48" Click="Rating_Click" Background="#FF3E3939" Foreground="White" FontFamily="Stencil"/>
+            <Button x:Name="RatingFive" Content="5" HorizontalAlignment="Center" Margin="900,164,200,0" VerticalAlignment="Top" Width="74" Height="60" FontSize="48" Click="Rating_Click" Background="#FF3E3939" Foreground="White" FontFamily="Stencil"/>
+            <Button x:Name="RatingTwo" Content="2" HorizontalAlignment="Center" Margin="374,164,724,0" VerticalAlignment="Top" Width="76" Height="60" FontSize="48" Click="Rating_Click" Background="#FF3E3939" Foreground="White" FontFamily="Stencil"/>
+            <Button x:Name="RatingOne" Content="1" HorizontalAlignment="Center" Margin="200,164,900,0" VerticalAlignment="Top" Width="74" Height="60" FontSize="48" Click="Rating_Click" Background="#FF3E3939" Foreground="White" FontFamily="Stencil"/>
+            <Button x:Name="RatingThree" Content="3" HorizontalAlignment="Center" Margin="550,164,550,0" VerticalAlignment="Top" Width="74" Height="60" FontSize="48" Click="Rating_Click" Background="#FF3E3939" Foreground="White" FontFamily="Stencil"/>
+            <Button Content="Next" HorizontalAlignment="Center" Margin="637,288,187,0" VerticalAlignment="Top" Width="350" Height="60" FontSize="48" Click="NextButton_Click" Background="#FF3E3939" Foreground="White" FontFamily="Stencil"/>
+            <Button Content="Random" HorizontalAlignment="Center" Margin="187,288,637,0" VerticalAlignment="Top" Width="350" Height="60" FontSize="48" Click="RandomButton_Click" Background="#FF3E3939" Foreground="White" FontFamily="Stencil"/>
+            <Grid x:Name="RecMovies" HorizontalAlignment="Left" Height="183" Margin="53,380,0,0" VerticalAlignment="Top" Width="1092"/>
         </Grid>
+        <Grid x:Name ="signOutOptions" Visibility="Hidden" HorizontalAlignment="Left" Height="771" VerticalAlignment="Top" Width="180">
+            <Rectangle Fill="#FFB82424" HorizontalAlignment="Left" Height="771" Margin="0,0,-1,0" Stroke="Black" VerticalAlignment="Top" Width="181"/>
+            <Button x:Name="CloseOptions" Content="&lt;----" HorizontalAlignment="Left" Margin="95,10,0,0" VerticalAlignment="Top" Width="75" Height="58" FontSize="36" Click="CloseOptions_Click" Background="#FF3E3939" FontFamily="Stencil" Foreground="White"/>
+            <Button x:Name="SignOut" Content="Sign Out" Visibility="Hidden" HorizontalAlignment="Left" Margin="10,124,0,0" VerticalAlignment="Top" Width="150" BorderBrush="Black" Background="#FF3E3939" Click="SignOut_Click" Height="60" FontSize="24" Foreground="White" FontFamily="Stencil"/>
+            <Image Margin="-106,442,-1,29" Source="netflix-n-logo-png.png" Stretch="None"/>
+        </Grid>
+
 
 
     </Grid>

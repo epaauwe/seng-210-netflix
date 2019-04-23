@@ -23,6 +23,7 @@ namespace NetflixRec
         public int UserID = -1;
         public List<Content> content = new List<Content>();
         public int currentIndex = 0;
+        public int userloggedIn = 0;
 
         public MainWindow()
         {
@@ -35,7 +36,6 @@ namespace NetflixRec
         {
             SignIn.Visibility = Visibility.Hidden;
             LoginPage.Visibility = Visibility.Visible;
-            LoginBorder.Visibility = Visibility.Visible;
             UserNameBox.Foreground = Brushes.Gray;
             PassWordBox.Foreground = Brushes.Gray;
             UserNameBox.Text = "Insert Username Here";
@@ -55,14 +55,14 @@ namespace NetflixRec
                 // user doesn't exist
                 return;
             }
+            userloggedIn = 1;
             content = DataController.LoadContent(UserID);
             MovieName.Content = content[currentIndex].Title;
 
             SignIn.Visibility = Visibility.Hidden;
             LoginPage.Visibility = Visibility.Hidden;
-            LoginBorder.Visibility = Visibility.Hidden;
             SignOut.Visibility = Visibility.Visible;
-            CreateUser.Margin = new Thickness(1025, 33, 0, 0);
+            CreateUser.Visibility = Visibility.Hidden;
             MovieInfoGrid.Visibility = Visibility.Visible;
         }
 
@@ -71,10 +71,12 @@ namespace NetflixRec
             content = new List<Content>();
             currentIndex = 0;
             UserID = -1;
+            userloggedIn = 0;
             SignOut.Visibility = Visibility.Hidden;
             SignIn.Visibility = Visibility.Visible;
-            CreateUser.Margin = new Thickness(0, 405, 0, 0);
             MovieInfoGrid.Visibility = Visibility.Hidden;
+            CreateUser.Visibility = Visibility.Visible;
+            signOutOptions.Visibility = Visibility.Hidden;
         }
 
         private void CreateUser_Click(object sender, RoutedEventArgs e)
@@ -83,7 +85,6 @@ namespace NetflixRec
             currentIndex = 0;
             SignIn.Visibility = Visibility.Hidden;
             CreateUserForm.Visibility = Visibility.Visible;
-            CreateUserFormBorder.Visibility = Visibility.Visible;
             FirstNameCreatedForm.Foreground = Brushes.Gray;
             LastNameCreatedForm.Foreground = Brushes.Gray;
             UserNameCreatedForm.Foreground = Brushes.Gray;
@@ -202,7 +203,6 @@ namespace NetflixRec
             MovieName.Content = content[currentIndex].Title;
 
             CreateUserForm.Visibility = Visibility.Hidden;
-            CreateUserFormBorder.Visibility = Visibility.Hidden;
             CreateUser.Margin = new Thickness(1025, 33, 0, 0);
             SignOut.Visibility = Visibility.Visible;
             MovieInfoGrid.Visibility = Visibility.Visible;
@@ -229,6 +229,32 @@ namespace NetflixRec
             Random rand = new Random();
             currentIndex = rand.Next(0, content.Count - 1);
             MovieName.Content = content[currentIndex].Title;
+        }
+
+        private void OpenOptions_Click(object sender, RoutedEventArgs e)
+        {
+            if(userloggedIn == 1)
+            {
+                SignOut.Visibility = Visibility.Visible;
+            }
+            signOutOptions.Visibility = Visibility.Visible;
+        }
+
+        private void CloseOptions_Click(object sender, RoutedEventArgs e)
+        {
+            signOutOptions.Visibility = Visibility.Hidden;
+        }
+
+        private void Cancel_Click(object sender, RoutedEventArgs e)
+        {
+            CreateUserForm.Visibility = Visibility.Hidden;
+            SignIn.Visibility = Visibility.Visible;
+        }
+
+        private void CancelLogin_Click(object sender, RoutedEventArgs e)
+        {
+            LoginPage.Visibility = Visibility.Hidden;
+            SignIn.Visibility = Visibility.Visible;
         }
     }
 }
