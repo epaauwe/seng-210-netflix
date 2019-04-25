@@ -57,7 +57,7 @@ namespace NetflixRec
             }
             userloggedIn = 1;
             content = DataController.LoadContent(UserID);
-            MovieName.Content = content[currentIndex].Title;
+            MovieName.Text = content[currentIndex].Title;
 
             SignIn.Visibility = Visibility.Hidden;
             LoginPage.Visibility = Visibility.Hidden;
@@ -200,7 +200,7 @@ namespace NetflixRec
                 return;
             }
             content = DataController.LoadContent(UserID);
-            MovieName.Content = content[currentIndex].Title;
+            MovieName.Text = content[currentIndex].Title;
 
             CreateUserForm.Visibility = Visibility.Hidden;
             CreateUser.Margin = new Thickness(1025, 33, 0, 0);
@@ -213,7 +213,7 @@ namespace NetflixRec
             double rating = Convert.ToDouble((sender as Button).Content.ToString());
             DataController.InsertRating(content[currentIndex].ID, UserID, rating);
             content.RemoveAt(currentIndex);
-            MovieName.Content = content[currentIndex].Title;
+            MovieName.Text = content[currentIndex].Title;
         }
 
         private void NextButton_Click(object sender, RoutedEventArgs e)
@@ -221,14 +221,14 @@ namespace NetflixRec
             if (currentIndex == content.Count - 1)
                 currentIndex = -1; // loop back to start if end of content is reached
             currentIndex++;
-            MovieName.Content = content[currentIndex].Title;
+            MovieName.Text = content[currentIndex].Title;
         }
 
         private void RandomButton_Click(object sender, RoutedEventArgs e)
         {
             Random rand = new Random();
             currentIndex = rand.Next(0, content.Count - 1);
-            MovieName.Content = content[currentIndex].Title;
+            MovieName.Text = content[currentIndex].Title;
         }
 
         private void OpenOptions_Click(object sender, RoutedEventArgs e)
