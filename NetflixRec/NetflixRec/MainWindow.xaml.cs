@@ -35,7 +35,6 @@ namespace NetflixRec
         {
 
             mainBackgroundColor.Fill = new SolidColorBrush(ColorPicker1.SelectedColor);
-            textBlock1.Text = Convert.ToString(ColorPicker1.SelectedColor);
 
         }
 
