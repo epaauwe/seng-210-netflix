@@ -67,7 +67,8 @@
             <Image Margin="-106,442,-1,29" Source="netflix-n-logo-png.png" Stretch="None"/>
         </Grid>
 
-        <wpfx:ColorPicker Name="ColorPicker1" DisplayColorAndName="False" SelectedColorChanged="ColorPicker1_SelectedColorChanged" Margin="998,654,60,65" />
+        <wpfx:ColorPicker Name="ColorPicker1" DisplayColorAndName="False" SelectedColorChanged="ColorPicker1_SelectedColorChanged" Margin="999,654,59,81" />
+        <Label Content="Background Color" HorizontalAlignment="Left" Margin="999,628,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
 
     </Grid>
 </Window>
