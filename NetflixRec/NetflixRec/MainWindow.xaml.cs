@@ -30,6 +30,14 @@ namespace NetflixRec
             InitializeComponent();
         }
 
+        private void ColorPicker1_SelectedColorChanged(object sender, RoutedPropertyChangedEventArgs<Color> e)
+
+        {
+
+            mainBackgroundColor.Fill = new SolidColorBrush(ColorPicker1.SelectedColor);
+            textBlock1.Text = Convert.ToString(ColorPicker1.SelectedColor);
+
+        }
 
 
         private void SignIn_Click(object sender, RoutedEventArgs e)
